@@ -60,15 +60,27 @@ void MyServer::slotReadClient()
         QString str;
         in >> str;
 
-        QString strMessage = "Клиент отправил : " + str;
-        ui->m_ptxt->append(strMessage);
+        if (str.contains("NAMES: "))
+        {
+            ui->comboBox->clear();
+            QStringList list = str.split(" ");
+            for (uint i = 1; i < list.size(); i++)
+                ui->comboBox->addItem(list[i]);
+        }
+        else
+        {
+            QString strMessage = "Клиент отправил : " + str;
+            ui->m_ptxt->append(strMessage);
+        }
         m_nNextBlockSize = 0;
     }
 }
 
 void MyServer::slotSendtoClient()
 {
-    QString str = ui->m_ptxtInput->text();
+    //QString str = ui->m_ptxtInput->text();
+    QString str = ui->comboBox->currentText();
+    QString str2 = ui->m_ptxtInput->text();
     if (socket_client == nullptr)
     {
         ui->m_ptxt->append("Нет подключений");
@@ -76,8 +88,17 @@ void MyServer::slotSendtoClient()
     }
     else
     {
-        send_text(socket_client, str);
-        ui->m_ptxt->append("Вы отправили: " + ui->m_ptxtInput->text());
+        if (str2 != "")
+        {
+            send_text(socket_client, str+" "+str2);
+            ui->m_ptxt->append("Вы отправили: " + str+" "+str2);
+        }
+        else
+        {
+            send_text(socket_client, str);
+            ui->m_ptxt->append("Вы отправили: " + str);
+        }
+
         ui->m_ptxtInput->setText("");
     }
 }

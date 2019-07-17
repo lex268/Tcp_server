@@ -44,6 +44,8 @@ private:
      * @brief socket_client - переменная, хранящая сокет клиента
      */
     QTcpSocket* socket_client;
+
+    bool flag = true;
     void send_text(QTcpSocket* pSocket, const QString& str);
 
 private slots:

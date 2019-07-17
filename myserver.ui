@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>300</width>
-    <height>400</height>
+    <width>358</width>
+    <height>522</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,13 +20,13 @@
       <item row="2" column="0">
        <widget class="QTextEdit" name="m_ptxt"/>
       </item>
-      <item row="3" column="0">
+      <item row="4" column="0">
        <widget class="QLineEdit" name="m_ptxtInput"/>
       </item>
-      <item row="4" column="0">
+      <item row="5" column="0">
        <widget class="QPushButton" name="pcmd">
         <property name="text">
-         <string>Send all</string>
+         <string>Send</string>
         </property>
        </widget>
       </item>
@@ -37,6 +37,9 @@
         </property>
        </widget>
       </item>
+      <item row="3" column="0">
+       <widget class="QComboBox" name="comboBox"/>
+      </item>
      </layout>
     </item>
    </layout>
@@ -46,7 +49,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>300</width>
+     <width>358</width>
      <height>22</height>
     </rect>
    </property>
